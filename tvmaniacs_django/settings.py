@@ -109,6 +109,11 @@ WSGI_APPLICATION = 'tvmaniacs_django.wsgi.application'
 
 import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+APP_DIR = os.path.dirname( globals()['__file__'] )
+
+
+#DECLARAMOS NOMBRE DE LA BASE DE DATOS A UTILIZAR
+DBNAME = 'mydb'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
