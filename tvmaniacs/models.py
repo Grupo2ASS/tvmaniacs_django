@@ -1,13 +1,8 @@
-from django.db import models
-
 from mongoengine import *
 from tvmaniacs_django.settings import DBNAME
 
 connect(DBNAME)
 
-class Post(Document):
-    title = StringField(max_length=120, required=True)
-    content = StringField(max_length=500, required=True)
-    last_update = DateTimeField(required=True)
-
-# Create your models here.
+class Actor(Document):
+    firstname = StringField(max_length=255, required=True)
+    lastname = StringField(max_length=255, required=True)
