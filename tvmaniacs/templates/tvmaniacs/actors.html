@@ -8,7 +8,9 @@
             </tr>
             {% for actor in Actors %}
                 <tr>
-                    <td><a href="{% url 'actor_details' id=actor.id %}">{{ actor.first_name }} {{ actor.last_name }}</a></td>
+                    <td>
+                        <a href="{% url 'actor_details' id=actor.id %}">{{ actor.first_name }} {{ actor.last_name }}</a>
+                    </td>
                  </tr>
             {% endfor %}
         </table>

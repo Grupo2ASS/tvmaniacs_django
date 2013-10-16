@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'^actors$', 'tvmaniacs.views.actors', name='actors'),
     url(r'^series$', 'tvmaniacs.views.series', name='series'),
     url(r'^actor/(?P<id>\w+)/$', 'tvmaniacs.views.actor_details', name='actor_details'),
+    url(r'^series/(?P<id>\w+)/$', 'tvmaniacs.views.series_details', name='series_details'),
+
 
     # Examples:
     # url(r'^$', 'tvmaniacs_django.views.home', name='home'),
