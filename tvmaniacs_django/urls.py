@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import DetailView, ListView
 
 # Uncomment the next two lines to enable the admin:
 #from django.contrib import admin
@@ -6,6 +7,10 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^$', 'tvmaniacs.views.home', name='home'),
+    url(r'^actors$', 'tvmaniacs.views.actors', name='actors'),
+    url(r'^series$', 'tvmaniacs.views.series', name='series'),
+    url(r'^actor/(?P<id>\w+)/$', 'tvmaniacs.views.actor_details', name='actor_details'),
+
     # Examples:
     # url(r'^$', 'tvmaniacs_django.views.home', name='home'),
     # url(r'^tvmaniacs_django/', include('tvmaniacs_django.foo.urls')),

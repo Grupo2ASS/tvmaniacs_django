@@ -1,0 +1,13 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+    <h1>{{ Actor.first_name }} {{ Actor.last_name }}</h1>
+    <div>
+        <table class="table">
+            <tr>
+                <td>{{ Actor.birth_place }}</td>
+                <td>{{ Actor.bio }}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

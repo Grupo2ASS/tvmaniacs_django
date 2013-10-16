@@ -1,0 +1,17 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+    <h1>Actors</h1>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            {% for actor in Actors %}
+                <tr>
+                    <td><a href="{% url 'actor_details' id=actor.id %}">{{ actor.first_name }} {{ actor.last_name }}</a></td>
+                 </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
