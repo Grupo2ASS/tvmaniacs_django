@@ -6,10 +6,11 @@
                 <img src="{{ Series.pic }}" class="img-thumbnail">
             </div>
             <div class="offset3">
-                <h1>{{ Series.name }}</h1>
+                <h1>{{ Series.name }}</h1><h6>({{ Series.year_start }} - {{ Series.year_end }})</h6>
+                <br>
                 <p>User Rating: <b>{{ Series.user_rating }}</b></p>
-                <p>({{ Series.year_start }} - {{ Series.year_end }})</p>
                 <p>{{ Series.description }}</p>
+                <br>
                 <p>
                 {% for g in Series.genres %}
                     {{ g }}&nbsp&nbsp&nbsp
