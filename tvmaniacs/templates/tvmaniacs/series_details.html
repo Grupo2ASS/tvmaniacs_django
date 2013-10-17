@@ -1,0 +1,38 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+     <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="pull-left">
+                <img src="{{ Series.pic }}" class="img-thumbnail">
+            </div>
+            <div class="offset3">
+                <h1>{{ Series.name }}</h1>
+                <p>User Rating: <b>{{ Series.user_rating }}</b></p>
+                <p>({{ Series.year_start }} - {{ Series.year_end }})</p>
+                <p>{{ Series.description }}</p>
+                <p>
+                {% for g in Series.genres %}
+                    {{ g }}&nbsp&nbsp&nbsp
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+        <div class="row-after">
+            <div>
+                <h4>Seasons</h4>
+                <p>
+                {% for s in Series.seasons %}
+                    <a href="{% url 'home' %}">{{ s.number }}</a>&nbsp&nbsp&nbsp
+                {% endfor %}
+                </p>
+            </div>
+            <div>
+                <h4>Cast</h4>
+                {% for a in Series.cast %}
+                    <p>{{ a.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
