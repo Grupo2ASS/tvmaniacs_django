@@ -4,7 +4,7 @@ from models import Series
 
 
 def home(request):
-    return render_to_response("tvmaniacs/home.html", {'welcome_msg': "Hello TvManiacs World!"})
+    return render_to_response("tvmaniacs/home.html", {'welcome_msg': "Welcome to TvManiacs!"})
 
 
 def actors(request):

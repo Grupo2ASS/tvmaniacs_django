@@ -9,7 +9,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy'
+        'ENGINE': 'django.db.backends.dummy',
+        #'NAME': 'tvdb',
+        #'USER': 'grupo2',
+        #'PASSWORD': 'iic2173',
+        #'HOST': 'arqui10.ing.puc.cl',
+        #'PORT': '27019'
     }
 }
 

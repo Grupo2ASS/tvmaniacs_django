@@ -4,11 +4,33 @@
     <div>
         <table class="table">
             <tr>
-                <td><img src="{{ Actor.pic }}" class="img-thumbnail"></td>
-                <td>{{ Actor.birth_place }}</td>
-                <td>{{ Actor.bio }}</td>
+                <td rowspan="2">
+                    <div><img src="{{ Actor.pic }}" class="img-thumbnail"></div>
+                </td>
+                <td>
+                    <div>Birth Place: {{ Actor.birth_place }}</div>
+                    <br>
+                    <div>Birth Date: {{ Actor.birth_date }}</div>
+                    <br><br>
+                    <div>{{ Actor.bio }}</div>
+                    <br>
+                </td>
             </tr>
         </table>
     </div>
+     <div>
+        <table >
+            <tr>
+                <th>Series:</th>
+            </tr>
+            {% for s in Actor.series %}
+                <tr>
+                <td class="row">{{ s.name }}
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 
 {% endblock %}
