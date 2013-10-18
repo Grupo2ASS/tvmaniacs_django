@@ -1,0 +1,25 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+    <h1>{{ Series.name }}: Season {{ Num }}</h1>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>User Rating</th>
+                <th>Description</th>
+            </tr>
+            {% for s in Series.seasons %}
+                {% ifequal s.number Num %}
+                    {% for c in s.chapters %}
+                    <tr>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.user_rating }}</td>
+                        <td>{{ c.desc }}</td>
+                    </tr>
+                    {% endfor %}
+                {%  endifequal %}
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

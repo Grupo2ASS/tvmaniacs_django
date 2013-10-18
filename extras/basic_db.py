@@ -34,14 +34,14 @@ s = [{"imdb_id": "tt1837642", "name": "Revenge", "user_rating": 7.9,
       "pic": "http://ia.media-imdb.com/images/M/MV5BMTg1NjE5NjQyM15BMl5BanBnXkFtZTcwOTM2MTQyOA@@._V1_SY317_CR12,0,214,317_.jpg",
       "year_start": "2011", "year_end": "",
       "cast": ["nm0000656"],
-      "seasons": [{"number": "3"}, {"number": "2"}, {"number": "1"}]},
+      "seasons": [{"number": "3", "chapters":[ {"name": "ch1", "user_rating":1, "desc":"chapssss"}, {"name": "ch2", "user_rating":2, "desc":"capitulo 2 de la serie Revenge"}]}, {"number": "2", "chapters":[ {"name": "ch1", "user_rating":3, "desc":"casp"}, {"name": "ch2", "user_rating":4, "desc":"capitulo 2 de temp 2 de la serie Revenge"}]}, {"number": "1", "chapters":[ {"name": "ch1temp1", "user_rating":5, "desc":"chapssss"}, {"name": "ch2temp1", "user_rating":6, "desc":"capitulo 2 temp 1 de la serie Revenge"}]}]},
      {"imdb_id": "tt0802148", "name": "Raines", "user_rating": 7.4,
       "description": "\nLos Angeles. Present day. Michael Raines, an eccentric but brilliant cop, solves murders in a very unusual way - he turns the victims into his partners. These visions are figments of Raines...                <a href=\"/title/tt0802148/plotsummary?ref_=tt_ov_pl\">See full summary</a>&nbsp;&raquo;\n    ",
       "duration": 45, "genres": [" Crime", " Drama"],
       "pic": "http://ia.media-imdb.com/images/M/MV5BNjQ3NjY5NjYyN15BMl5BanBnXkFtZTcwNTgzMjU0MQ@@._V1_SY317_CR20,0,214,317_.jpg",
       "year_start": "2007", "year_end": "",
       "cast": ["nm0000156", "nm0000656"],
-      "seasons": [{"number": "1"}]},]
+      "seasons": [{"number": "1", "chapters":[ {"name": "capitulo1", "user_rating":5, "desc":"cprimer campitulo ssss"}, {"name": "ch2", "user_rating":8, "desc":"capitulo 2 de la serie Raines"}]}]},]
 
 
 print "clearing"

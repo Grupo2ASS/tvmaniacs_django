@@ -23,7 +23,8 @@
                 <h4>Seasons</h4>
                 <p>
                 {% for s in Series.seasons %}
-                    <a href="{% url 'home' %}">{{ s.number }}</a>&nbsp&nbsp&nbsp
+{#                    <a href="{% url 'episodes'  season=s.number  imdb_id=Series.imdb_id%}">{{ s.number }}</a>&nbsp&nbsp&nbsp#}
+                     <a href="{% url 'home' %}">{{ s.number }}</a>&nbsp&nbsp&nbsp
                 {% endfor %}
                 </p>
             </div>

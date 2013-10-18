@@ -6,6 +6,14 @@ from tvmaniacs_django.settings import DBNAME
 connect(DBNAME)
 
 
+class Season(EmbeddedDocument):
+    number = StringField()
+    date = DateTimeField()
+    episodes = ListField()
+    chapters = ListField()
+    #reviews
+
+
 class Series(Document):
     imdb_id = StringField(max_length=15, required=True)
     name = StringField(max_length=255, required=True)
@@ -14,9 +22,9 @@ class Series(Document):
     year_end = DateTimeField()
     user_rating = StringField()
     description = StringField()
-    seasons = ListField()
     genres = ListField()
     pic = URLField()
+    seasons = ListField(EmbeddedDocumentField(Season))
     cast = ListField()
 
     @staticmethod
@@ -46,10 +54,5 @@ class Actor(Document):
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
 
-
-class Season(models.Model):
-    number = IntField()
-    year = DateTimeField()
-    #series = models.ForeignKey(Series)
 
 
