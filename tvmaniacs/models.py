@@ -19,6 +19,11 @@ class Series(Document):
     pic = URLField()
     cast = ListField()
 
+    @staticmethod
+    def get_actors_objects(series_id):
+        actors = Actor.objects.filter(imdb_id__in=Series.objects.get(imdb_id=series_id).cast)
+        return actors
+
     def __unicode__(self):
         return self.name
 
@@ -32,7 +37,11 @@ class Actor(Document):
     birth_date = DateTimeField()
     birth_place = StringField(max_length=255)
     series = ListField()
-    #seriess = models.ManyToManyField(Series)
+
+    @staticmethod
+    def get_series_objects(actor_id):
+        series = Series.objects.filter(imdb_id__in=Actor.objects.get(imdb_id=actor_id).series)
+        return series
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
