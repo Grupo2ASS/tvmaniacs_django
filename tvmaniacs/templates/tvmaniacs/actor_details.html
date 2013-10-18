@@ -10,14 +10,15 @@
                 <h1>{{ Actor.first_name }} {{ Actor.last_name }}</h1>
                 <p>Birth Place: {{ Actor.birth_place }}</p>
                 <p>Birth Date: {{ Actor.birth_date }}</p>
+                <br>
                 <p>{{ Actor.bio }}</p>
             </div>
         </div>
         <div class="row-after">
             <div>
                 <h4>Series</h4>
-                {% for s in Actor.series %}
-                    <p>{{ s.name }}</p>
+                {% for s in Series %}
+                    <p><a href="{% url 'series_details' imdb_id=s.imdb_id %}">{{ s }}</a></p>
                 {% endfor %}
             </div>
         </div>

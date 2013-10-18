@@ -8,19 +8,21 @@ def home(request):
 
 
 def actors(request):
-    actors = Actor.objects
-    return render_to_response("tvmaniacs/actors.html", {'Actors': actors})
+    actors_all = Actor.objects
+    return render_to_response("tvmaniacs/actors.html", {'Actors': actors_all})
 
 
 def series(request):
-    series = Series.objects
-    return render_to_response("tvmaniacs/series.html", {'Series': series})
+    series_all = Series.objects
+    return render_to_response("tvmaniacs/series.html", {'Series': series_all})
 
 
-def actor_details(request, id):
-    actor = Actor.objects.get(id=id)
-    return render_to_response("tvmaniacs/actor_details.html", {'Actor': actor})
+def actor_details(request, imdb_id):
+    actor = Actor.objects.get(imdb_id=imdb_id)
+    series = Series.objects.filter(imdb_id__in=actor.series)
+    return render_to_response("tvmaniacs/actor_details.html", {'Actor': actor, 'Series': series})
 
-def series_details(request, id):
-    series = Series.objects.get(id=id)
-    return render_to_response("tvmaniacs/series_details.html", {'Series': series})
+def series_details(request, imdb_id):
+    series = Series.objects.get(imdb_id=imdb_id)
+    actors = Actor.objects.filter(imdb_id__in=series.cast)
+    return render_to_response("tvmaniacs/series_details.html", {'Series': series, 'Actors': actors })

@@ -9,7 +9,7 @@
             {% for actor in Actors %}
                 <tr>
                     <td>
-                        <a href="{% url 'actor_details' id=actor.id %}">{{ actor.first_name }} {{ actor.last_name }}</a>
+                        <a href="{% url 'actor_details' imdb_id=actor.imdb_id %}">{{ actor.first_name }} {{ actor.last_name }}</a>
                     </td>
                  </tr>
             {% endfor %}

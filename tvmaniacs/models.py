@@ -7,6 +7,7 @@ connect(DBNAME)
 
 
 class Series(Document):
+    imdb_id = StringField(max_length=15, required=True)
     name = StringField(max_length=255, required=True)
     year = DateTimeField()
     year_start = DateTimeField()
@@ -18,21 +19,28 @@ class Series(Document):
     pic = URLField()
     cast = ListField()
 
+    def __unicode__(self):
+        return self.name
+
 
 class Actor(Document):
+    imdb_id = StringField(max_length=15, required=True)
     first_name = StringField(max_length=255, required=True)
     last_name = StringField(max_length=255, required=True)
-    id = IntField()
     pic = URLField()
     bio = StringField()
     birth_date = DateTimeField()
     birth_place = StringField(max_length=255)
     series = ListField()
-  #  series = ReferenceField(Series, reverse_delete_rule=DO_NOTHING)
+    #seriess = models.ManyToManyField(Series)
+
+    def __unicode__(self):
+        return u'%s %s' % (self.first_name, self.last_name)
 
 
 class Season(models.Model):
     number = IntField()
     year = DateTimeField()
+    #series = models.ForeignKey(Series)
 
 
