@@ -27,10 +27,11 @@ class Series(Document):
     seasons = ListField(EmbeddedDocumentField(Season))
     cast = ListField()
 
-    @staticmethod
-    def get_actors_objects(series_id):
-        actors = Actor.objects.filter(imdb_id__in=Series.objects.get(imdb_id=series_id).cast)
-        return actors
+    def timespan(self):
+        return '(' + self.year_start + ' - ' + self.year_end + ')'
+
+    def get_cast(self):
+        return Actor.objects.filter(imdb_id__in=self.cast)
 
     def __unicode__(self):
         return self.name
@@ -46,10 +47,8 @@ class Actor(Document):
     birth_place = StringField(max_length=255)
     series = ListField()
 
-    @staticmethod
-    def get_series_objects(actor_id):
-        series = Series.objects.filter(imdb_id__in=Actor.objects.get(imdb_id=actor_id).series)
-        return series
+    def get_series(self):
+        return Series.objects.filter(imdb_id__in=self.series)
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)

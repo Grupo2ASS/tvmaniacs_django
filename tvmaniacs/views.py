@@ -19,14 +19,12 @@ def series(request):
 
 def actor_details(request, imdb_id):
     actor = Actor.objects.get(imdb_id=imdb_id)
-    series = Actor.get_series_objects(imdb_id)
-    return render_to_response("tvmaniacs/actor_details.html", {'Actor': actor, 'Series': series})
+    return render_to_response("tvmaniacs/actor_details.html", {'Actor': actor})
 
 
 def series_details(request, imdb_id):
     series = Series.objects.get(imdb_id=imdb_id)
-    actors = Series.get_actors_objects(imdb_id)
-    return render_to_response("tvmaniacs/series_details.html", {'Series': series, 'Actors': actors})
+    return render_to_response("tvmaniacs/series_details.html", {'Series': series})
 
 
 def episodes(request, imdb_id, season):

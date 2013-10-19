@@ -17,7 +17,7 @@
         <div class="row-after">
             <div>
                 <h4>Series</h4>
-                {% for s in Series %}
+                {% for s in Actor.get_series %}
                     <p><a href="{% url 'series_details' imdb_id=s.imdb_id %}">{{ s }}</a></p>
                 {% endfor %}
             </div>

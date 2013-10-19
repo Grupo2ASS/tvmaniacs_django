@@ -6,7 +6,7 @@
                 <img src="{{ Series.pic }}" class="img-thumbnail">
             </div>
             <div class="offset3">
-                <h1>{{ Series.name }}</h1><h6>({{ Series.year_start }} - {{ Series.year_end }})</h6>
+                <h1>{{ Series.name }}</h1><h6>{{ Series.timespan }}</h6>
                 <br>
 
                 <p>User Rating: <b>{{ Series.user_rating }}</b></p>
@@ -33,7 +33,7 @@
             </div>
             <div>
                 <h4>Cast</h4>
-                {% for a in Actors %}
+                {% for a in Series.get_cast %}
                     <p><a href="{% url 'actor_details' imdb_id=a.imdb_id %}">{{ a }}</a></p>
                 {% endfor %}
             </div>
