@@ -33,6 +33,13 @@ class Series(Document):
     def get_cast(self):
         return Actor.objects.filter(imdb_id__in=self.cast)
 
+    def get_season(self, season_number):
+        print self.seasons
+        for s in self.seasons:
+            if s.number == season_number:
+                return s
+        return {}
+
     def __unicode__(self):
         return self.name
 

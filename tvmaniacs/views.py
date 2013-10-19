@@ -27,6 +27,7 @@ def series_details(request, imdb_id):
     return render_to_response("tvmaniacs/series_details.html", {'Series': series})
 
 
-def episodes(request, imdb_id, season):
+def episodes(request, imdb_id, season_number):
     series = Series.objects.get(imdb_id=imdb_id)
-    return render_to_response("tvmaniacs/episodes.html", {'Series': series, 'Num': season})
+    season = series.get_season(season_number)
+    return render_to_response("tvmaniacs/episodes.html", {'Series': series, 'Season': season})

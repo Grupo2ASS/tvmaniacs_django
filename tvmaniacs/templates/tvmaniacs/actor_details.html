@@ -7,11 +7,13 @@
                 <img src="{{ Actor.pic }}" class="img-thumbnail">
             </div>
             <div class="offset3">
-                <h1>{{ Actor.first_name }} {{ Actor.last_name }}</h1>
+                <h1>{{ Actor }}</h1>
+
                 <p>Birth Place: {{ Actor.birth_place }}</p>
+
                 <p>Birth Date: {{ Actor.birth_date }}</p>
-                <br>
-                <p>{{ Actor.bio }}</p>
+
+                <p class="margin-top">{{ Actor.bio }}</p>
             </div>
         </div>
         <div class="row-after">

@@ -21,7 +21,7 @@ a = [{"imdb_id": "nm0000102", "first_name": "Kevin", "last_name": "Bacon",
       "bio": "\nMadeleine Stowe grew up in Eagle Rock, a working-class neighborhood of Los Angeles. At age ten she started practicing for a career as a concert pianist and trained every day for hours. However, when her instructor died in 1976 she more or less quit playing. She went to University of Southern California and studied cinema and journalism before ...        <span class=\"see-more inline nobr-only\">\n                <a href=\"/name/nm0000656/bio?ref_=nm_ov_bio_sm\">See full bio</a> &raquo;\n        </span>\n",
       "pic": "http://ia.media-imdb.com/images/M/MV5BMTA3OTI0NzkzODVeQTJeQWpwZ15BbWU3MDEyMzYyOTY@._V1_SY317_CR3,0,214,317_.jpg",
       "birth_date": "1958-8-18", "birth_place": "Los Angeles, California, USA",
-      "series":["tt1837642", "tt0802148"]},
+      "series": ["tt1837642", "tt0802148"]},
      {"imdb_id": "nm0000156", "first_name": "Jeff", "last_name": "Goldblum",
       "bio": "\nBorn Jeffrey Lynn Goldblum on October 22, 1952 in Pittsburgh, Pennsylvania, actor Jeff Goldblum began his career on the New York stage after moving to the city at age seventeen. Possessing his own unique style of delivery, Goldblum made an impression on moviegoers with little more than a single line in <a href=\"/name/nm0000095/?ref_=nm_ov_bio_lk1\">Woody Allen</a>'s <a href=\"/title/tt0075686/?ref_=nm_ov_bio_lk2\">Annie Hall</a>, when he fretted ...        <span class=\"see-more inline nobr-only\">\n                <a href=\"/name/nm0000156/bio?ref_=nm_ov_bio_sm\">See full bio</a> &raquo;\n        </span>\n",
       "pic": "http://ia.media-imdb.com/images/M/MV5BMTE5NzkyODg1Nl5BMl5BanBnXkFtZTYwMTY2OTE0._V1_SY317_CR22,0,214,317_.jpg",
@@ -34,15 +34,28 @@ s = [{"imdb_id": "tt1837642", "name": "Revenge", "user_rating": 7.9,
       "pic": "http://ia.media-imdb.com/images/M/MV5BMTg1NjE5NjQyM15BMl5BanBnXkFtZTcwOTM2MTQyOA@@._V1_SY317_CR12,0,214,317_.jpg",
       "year_start": "2011", "year_end": "",
       "cast": ["nm0000656"],
-      "seasons": [{"number": "3", "chapters":[ {"name": "ch1", "user_rating":1, "desc":"chapssss"}, {"name": "ch2", "user_rating":2, "desc":"capitulo 2 de la serie Revenge"}]}, {"number": "2", "chapters":[ {"name": "ch1", "user_rating":3, "desc":"casp"}, {"name": "ch2", "user_rating":4, "desc":"capitulo 2 de temp 2 de la serie Revenge"}]}, {"number": "1", "chapters":[ {"name": "ch1temp1", "user_rating":5, "desc":"chapssss"}, {"name": "ch2temp1", "user_rating":6, "desc":"capitulo 2 temp 1 de la serie Revenge"}]}]},
+      "seasons": [{"number": "3", "chapters": [{"name": "ch1", "user_rating": 1, "desc": "chapssss"},
+                                               {"name": "ch2", "user_rating": 2,
+                                                "desc": "capitulo 2 de la serie Revenge"}]}, {"number": "2",
+                                                                                              "chapters": [
+                                                                                                  {"name": "ch1",
+                                                                                                   "user_rating": 3,
+                                                                                                   "desc": "casp"},
+                                                                                                  {"name": "ch2",
+                                                                                                   "user_rating": 4,
+                                                                                                   "desc": "capitulo 2 de temp 2 de la serie Revenge"}]},
+                  {"number": "1", "chapters": [{"name": "ch1temp1", "user_rating": 5, "desc": "chapssss"},
+                                               {"name": "ch2temp1", "user_rating": 6,
+                                                "desc": "capitulo 2 temp 1 de la serie Revenge"}]}]},
      {"imdb_id": "tt0802148", "name": "Raines", "user_rating": 7.4,
       "description": "\nLos Angeles. Present day. Michael Raines, an eccentric but brilliant cop, solves murders in a very unusual way - he turns the victims into his partners. These visions are figments of Raines...                <a href=\"/title/tt0802148/plotsummary?ref_=tt_ov_pl\">See full summary</a>&nbsp;&raquo;\n    ",
       "duration": 45, "genres": [" Crime", " Drama"],
       "pic": "http://ia.media-imdb.com/images/M/MV5BNjQ3NjY5NjYyN15BMl5BanBnXkFtZTcwNTgzMjU0MQ@@._V1_SY317_CR20,0,214,317_.jpg",
       "year_start": "2007", "year_end": "",
       "cast": ["nm0000156", "nm0000656"],
-      "seasons": [{"number": "1", "chapters":[ {"name": "capitulo1", "user_rating":5, "desc":"cprimer campitulo ssss"}, {"name": "ch2", "user_rating":8, "desc":"capitulo 2 de la serie Raines"}]}]},]
-
+      "seasons": [{"number": "1",
+                   "chapters": [{"name": "capitulo1", "user_rating": 5, "desc": "cprimer campitulo ssss"},
+                                {"name": "ch2", "user_rating": 8, "desc": "capitulo 2 de la serie Raines"}]}]}, ]
 
 print "clearing"
 actors.remove()
@@ -56,6 +69,5 @@ actors.save(a[3])
 
 series.save(s[0])
 series.save(s[1])
-
 
 print "searching"

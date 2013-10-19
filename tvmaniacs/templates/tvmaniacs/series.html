@@ -10,10 +10,14 @@
             </tr>
             {% for series in Series %}
                 <tr>
-                    <td><a href="{% url 'series_details' imdb_id=series.imdb_id %}">{{ series.name }}</a> ({{ series.year_start }})</td>
+                    <td>
+                        <a href="{% url 'series_details' imdb_id=series.imdb_id %}">{{ series.name }}</a>
+
+                        <p>{{ series.timespan }}</p>
+                    </td>
                     <td>{{ series.user_rating }}</td>
                     <td>{{ series.description }}</td>
-                 </tr>
+                </tr>
             {% endfor %}
         </table>
     </div>

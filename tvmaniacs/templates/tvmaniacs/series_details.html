@@ -7,12 +7,10 @@
             </div>
             <div class="offset3">
                 <h1>{{ Series.name }}</h1><h6>{{ Series.timespan }}</h6>
-                <br>
 
                 <p>User Rating: <b>{{ Series.user_rating }}</b></p>
 
                 <p>{{ Series.description }}</p>
-                <br>
 
                 <div class="genres">
                     {% for g in Series.genres %}
@@ -27,7 +25,7 @@
 
                 <p>
                     {% for s in Series.seasons %}
-                        <a href="{% url 'episodes' Series.imdb_id s.number %}">{{ s.number }}</a>&nbsp&nbsp&nbsp
+                        <a href="{% url 'episodes' Series.imdb_id s.number %}">{{ s.number }}</a>
                     {% endfor %}
                 </p>
             </div>

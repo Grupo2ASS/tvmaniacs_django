@@ -1,6 +1,7 @@
 {% extends "tvmaniacs/base.html" %}
 {% block content %}
-    <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Num }}</h1>
+    <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Season.number }}
+    </h1>
     <div>
         <table class="table">
             <tr>
@@ -8,17 +9,14 @@
                 <th>User Rating</th>
                 <th>Description</th>
             </tr>
-            {% for s in Series.seasons %}
-                {% ifequal s.number Num %}
-                    {% for c in s.chapters %}
-                    <tr>
-                        <td>{{ c.name }}</td>
-                        <td>{{ c.user_rating }}</td>
-                        <td>{{ c.desc }}</td>
-                    </tr>
-                    {% endfor %}
-                {% endifequal %}
+            {% for c in Season.chapters %}
+                <tr>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.user_rating }}</td>
+                    <td>{{ c.desc }}</td>
+                </tr>
             {% endfor %}
+
         </table>
     </div>
 
