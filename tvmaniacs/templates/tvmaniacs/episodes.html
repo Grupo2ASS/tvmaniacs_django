@@ -1,6 +1,6 @@
 {% extends "tvmaniacs/base.html" %}
 {% block content %}
-    <h1>{{ Series.name }}: Season {{ Num }}</h1>
+    <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Num }}</h1>
     <div>
         <table class="table">
             <tr>
@@ -17,7 +17,7 @@
                         <td>{{ c.desc }}</td>
                     </tr>
                     {% endfor %}
-                {%  endifequal %}
+                {% endifequal %}
             {% endfor %}
         </table>
     </div>
