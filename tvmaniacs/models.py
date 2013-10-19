@@ -15,12 +15,16 @@ class Review(EmbeddedDocument):
     critic = BooleanField()
     link = URLField()
 
+class Episode(EmbeddedDocument):
+    name = StringField()
+    user_rating = IntField(min_value=0, max_value=10)
+    description = StringField()
+
 
 class Season(EmbeddedDocument):
-    number = StringField()
+    number = StringField(required=True)
     date = DateTimeField()
-    episodes = ListField()
-    chapters = ListField()
+    chapters = ListField(EmbeddedDocumentField(Episode))
     reviews = ListField(EmbeddedDocumentField(Review))
 
 
@@ -30,9 +34,11 @@ class Series(Document):
     year = DateTimeField()
     year_start = DateTimeField()
     year_end = DateTimeField()
-    user_rating = StringField()
+    user_rating = IntField(min_value=0, max_value=10)
+    metascore = IntField(min_value=0, max_value=100)
+    length = IntField()
     description = StringField()
-    genres = ListField()
+    genres = ListField(StringField())
     pic = URLField()
     seasons = ListField(EmbeddedDocumentField(Season))
     cast = ListField()
@@ -57,6 +63,9 @@ class Actor(Document):
     imdb_id = StringField(max_length=15, required=True)
     first_name = StringField(max_length=255, required=True)
     last_name = StringField(max_length=255, required=True)
+    score = IntField(min_value=0, max_value=100)
+    high_score = IntField(min_value=0, max_value=100)
+    low_score = IntField(min_value=0, max_value=100)
     pic = URLField()
     bio = StringField()
     birth_date = DateTimeField()
