@@ -7,7 +7,7 @@ db = connection[databaseName]
 actors = db['actor']
 series = db['series']
 
-a = [{"imdb_id": "nm0000102", "first_name": "Kevin", "last_name": "Bacon",
+a = [{"imdb_id": "nm0000102", "first_name": "Kevin", "last_name": "Bacon", "score":60, "high_score":70, "low_score":40,
       "bio": "\nBorn on July 8, 1958 in Philadelphia, Pennsylvania, Kevin Bacon's early training as an actor came from The Manning Street. His debut as the strict Chip Diller in <a href=\"/title/tt0077975/?ref_=nm_ov_bio_lk1\">Animal House</a> almost seems like an inside joke, but he managed to escape almost unnoticed from that role. <a href=\"/title/tt0083833/?ref_=nm_ov_bio_lk2\">Diner</a> became the turning point after a couple of television series and a number of ...        <span class=\"see-more inline nobr-only\">\n                <a href=\"/name/nm0000102/bio?ref_=nm_ov_bio_sm\">See full bio</a> &raquo;\n        </span>\n",
       "pic": "http://ia.media-imdb.com/images/M/MV5BMTM0ODE5MjI1OV5BMl5BanBnXkFtZTcwNDc2MjAzMw@@._V1_SY317_CR8,0,214,317_.jpg",
       "birth_date": "1958-7-8", "birth_place": "Philadelphia, Pennsylvania, USA",
@@ -66,7 +66,7 @@ s = [{"imdb_id": "tt1837642", "name": "Revenge", "user_rating": 7.9,
 			}]}],
 
      },
-     {"imdb_id": "tt0802148", "name": "Raines", "user_rating": 7.4,
+     {"imdb_id": "tt0802148", "length":50, "name": "Raines", "user_rating": 7.4, "metascore":58,
       "description": "\nLos Angeles. Present day. Michael Raines, an eccentric but brilliant cop, solves murders in a very unusual way - he turns the victims into his partners. These visions are figments of Raines...                <a href=\"/title/tt0802148/plotsummary?ref_=tt_ov_pl\">See full summary</a>&nbsp;&raquo;\n    ",
       "duration": 45, "genres": [" Crime", " Drama"],
       "pic": "http://ia.media-imdb.com/images/M/MV5BNjQ3NjY5NjYyN15BMl5BanBnXkFtZTcwNTgzMjU0MQ@@._V1_SY317_CR20,0,214,317_.jpg",

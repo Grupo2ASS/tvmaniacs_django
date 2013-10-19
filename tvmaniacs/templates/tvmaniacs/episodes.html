@@ -3,7 +3,7 @@
     <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Season.number }}
     </h1>
     <div>
-        <div class="episode-list top-offset">
+        <div class="episode-list top-offset5">
             <table class="table">
                 <h4>Episode List</h4>
                 <tr>
@@ -20,7 +20,7 @@
                 {% endfor %}
             </table>
         </div>
-        <div class="reviews-list top-offset">
+        <div class="reviews-list top-offset5">
             <table class="table">
                 <h4>Reviews</h4>
                 {% for r in Season.reviews %}

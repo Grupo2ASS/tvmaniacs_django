@@ -15,6 +15,7 @@ class Review(EmbeddedDocument):
     critic = BooleanField()
     link = URLField()
 
+
 class Episode(EmbeddedDocument):
     name = StringField()
     user_rating = IntField(min_value=0, max_value=10)
@@ -55,6 +56,9 @@ class Series(Document):
                 return s
         return {}
 
+    def get_length(self):
+        return str(self.length) + ' min'
+
     def __unicode__(self):
         return self.name
 
@@ -75,8 +79,9 @@ class Actor(Document):
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
 
+    def has_scores(self):
+        if self.score and self.high_score and self.low_score:
+            return True
+
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
-
-
-
