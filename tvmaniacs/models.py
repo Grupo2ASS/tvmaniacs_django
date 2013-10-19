@@ -6,12 +6,22 @@ from tvmaniacs_django.settings import DBNAME
 connect(DBNAME)
 
 
+class Review(EmbeddedDocument):
+    score = IntField()
+    name = StringField()
+    institution = StringField()
+    comment = StringField()
+    date = DateTimeField()
+    critic = BooleanField()
+    link = URLField()
+
+
 class Season(EmbeddedDocument):
     number = StringField()
     date = DateTimeField()
     episodes = ListField()
     chapters = ListField()
-    #reviews
+    reviews = ListField(EmbeddedDocumentField(Review))
 
 
 class Series(Document):
@@ -34,7 +44,6 @@ class Series(Document):
         return Actor.objects.filter(imdb_id__in=self.cast)
 
     def get_season(self, season_number):
-        print self.seasons
         for s in self.seasons:
             if s.number == season_number:
                 return s

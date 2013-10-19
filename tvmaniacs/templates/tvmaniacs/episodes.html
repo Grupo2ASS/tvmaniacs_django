@@ -3,21 +3,44 @@
     <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Season.number }}
     </h1>
     <div>
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>User Rating</th>
-                <th>Description</th>
-            </tr>
-            {% for c in Season.chapters %}
+        <div class="episode-list top-offset">
+            <table class="table">
+                <h4>Episode List</h4>
                 <tr>
-                    <td>{{ c.name }}</td>
-                    <td>{{ c.user_rating }}</td>
-                    <td>{{ c.desc }}</td>
+                    <th>Name</th>
+                    <th>User Rating</th>
+                    <th>Description</th>
                 </tr>
-            {% endfor %}
+                {% for c in Season.chapters %}
+                    <tr>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.user_rating }}</td>
+                        <td>{{ c.desc }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="reviews-list top-offset">
+            <table class="table">
+                <h4>Reviews</h4>
+                {% for r in Season.reviews %}
+                    <tr>
+                        <td><b>{{ r.score }}</b></td>
+                        <td>
+                            <p>{{ r.name }}</p>
 
-        </table>
+                            <p>({{ r.institution }})</p>
+
+                            <p>{{ r.date }}</p>
+                        </td>
+                        <td>{{ r.comment }}</td>
+                        {% if r.link %}
+                            <td><a href="{{ r.link }}">See full review</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 
 {% endblock %}
