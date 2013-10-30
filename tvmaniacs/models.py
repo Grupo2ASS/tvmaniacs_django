@@ -1,5 +1,4 @@
 from mongoengine import *
-from django.db import models
 from tvmaniacs_django.settings import DBNAME
 
 
@@ -18,12 +17,12 @@ class Review(EmbeddedDocument):
 
 class Episode(EmbeddedDocument):
     name = StringField()
-    user_rating = IntField(min_value=0, max_value=10)
+    user_rating = FloatField(min_value=0, max_value=10)
     description = StringField()
 
 
 class Season(EmbeddedDocument):
-    number = StringField(required=True)
+    number = IntField(required=True)
     date = DateTimeField()
     chapters = ListField(EmbeddedDocumentField(Episode))
     reviews = ListField(EmbeddedDocumentField(Review))
@@ -35,7 +34,7 @@ class Series(Document):
     year = DateTimeField()
     year_start = DateTimeField()
     year_end = DateTimeField()
-    user_rating = IntField(min_value=0, max_value=10)
+    user_rating = FloatField(min_value=0, max_value=10)
     metascore = IntField(min_value=0, max_value=100)
     length = IntField()
     description = StringField()
@@ -52,7 +51,7 @@ class Series(Document):
 
     def get_season(self, season_number):
         for s in self.seasons:
-            if s.number == season_number:
+            if s.number == int(season_number):
                 return s
         return {}
 
