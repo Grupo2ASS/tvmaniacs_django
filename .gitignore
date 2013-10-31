@@ -2,3 +2,5 @@
 .idea
 *.iml
 *.ipr
+
+.DS_Store
