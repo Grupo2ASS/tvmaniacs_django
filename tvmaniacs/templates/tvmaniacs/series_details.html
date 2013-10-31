@@ -1,0 +1,56 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="pull-left">
+                <img src="{{ Series.pic }}" class="img-thumbnail">
+            </div>
+            <div class="offset3">
+                <h1>{{ Series.name }}</h1>
+                <h6>{{ Series.timespan }}</h6>
+                {% if Series.length %}
+                    <h6>{{ Series.get_length }}</h6>
+                {% endif %}
+                <div class="row-fluid top-offset2">
+                    <div class="pull-left">
+                        <p>User Rating</p>
+
+                        <h2>{{ Series.user_rating }}</h2>
+                    </div>
+                    {% if Series.metascore %}
+                        <div class="offset3">
+                            <p>Metascore</p>
+
+                            <h2>{{ Series.metascore }}</h2>
+                        </div>
+                    {% endif %}
+                </div>
+                <p class="top-offset5">{{ Series.description }}</p>
+
+                <div class="genres">
+                    {% for g in Series.genres %}
+                        <p>{{ g }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row-after">
+            <div>
+                <h4>Seasons</h4>
+
+                <p>
+                    {% for s in Series.seasons %}
+                        <a href="{% url 'episodes' Series.imdb_id s.number %}">{{ s.number }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+            <div>
+                <h4>Cast</h4>
+                {% for a in Series.get_cast %}
+                    <p><a href="{% url 'actor_details' imdb_id=a.imdb_id %}">{{ a }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

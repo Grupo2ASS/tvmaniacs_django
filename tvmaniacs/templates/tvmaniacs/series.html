@@ -1,0 +1,25 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+    <h1>Series</h1>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>User Rating</th>
+                <th>Description</th>
+            </tr>
+            {% for series in Series %}
+                <tr>
+                    <td>
+                        <a href="{% url 'series_details' imdb_id=series.imdb_id %}">{{ series.name }}</a>
+
+                        <p>{{ series.timespan }}</p>
+                    </td>
+                    <td>{{ series.user_rating }}</td>
+                    <td>{{ series.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

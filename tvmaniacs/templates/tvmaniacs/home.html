@@ -4,20 +4,5 @@
         {{ welcome_msg }}
     </h1>
 
-    <h2>Test Database Connection:</h2>
-    <div>
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>Lastname</th>
-            </tr>
-            {% for actor in Actors %}
-                <tr>
-                    <td>{{ actor.firstname }}</td>
-                    <td>{{ actor.lastname }}</td>
-                 </tr>
-            {% endfor %}
-        </table>
-    </div>
 
 {% endblock %}

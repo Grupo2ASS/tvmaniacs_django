@@ -1,0 +1,44 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="pull-left">
+                <img src="{{ Actor.pic }}" class="img-thumbnail">
+            </div>
+            <div class="offset3">
+                <h1>{{ Actor }}</h1>
+
+                <div class="row-fluid top-offset2">
+                    {% if Actor.has_scores %}
+                        <div class="pull-left">
+                            <p>Score</p>
+
+                            <h2>{{ Actor.score }}</h2>
+                        </div>
+                        <div class="offset3 top-offset2">
+                            <p>High: {{ Actor.high_score }}</p>
+
+                            <p>Low: {{ Actor.low_score }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <p>Birth Place: {{ Actor.birth_place }}</p>
+
+                <p>Birth Date: {{ Actor.birth_date }}</p>
+
+                <p class="top-offset5">{{ Actor.bio }}</p>
+            </div>
+        </div>
+        <div class="row-after">
+            <div>
+                <h4>Series</h4>
+                {% for s in Actor.get_series %}
+                    <p><a href="{% url 'series_details' imdb_id=s.imdb_id %}">{{ s }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
