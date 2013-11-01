@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from models import Actor
+from models import Actors
 from models import Series
 
 
@@ -8,7 +8,7 @@ def home(request):
 
 
 def actors(request):
-    actors_all = Actor.objects
+    actors_all = Actors.objects
     return render_to_response("tvmaniacs/actors.html", {'Actors': actors_all})
 
 

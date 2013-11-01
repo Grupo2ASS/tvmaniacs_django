@@ -62,7 +62,7 @@ class Series(Document):
         return self.name
 
 
-class Actor(Document):
+class Actors(Document):
     imdb_id = StringField(max_length=15, required=True)
     first_name = StringField(max_length=255, required=True)
     last_name = StringField(max_length=255, required=True)
