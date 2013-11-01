@@ -47,7 +47,7 @@ class Series(Document):
         return '(' + self.year_start + ' - ' + self.year_end + ')'
 
     def get_cast(self):
-        return Actor.objects.filter(imdb_id__in=self.cast)
+        return Actors.objects.filter(imdb_id__in=self.cast)
 
     def get_season(self, season_number):
         for s in self.seasons:

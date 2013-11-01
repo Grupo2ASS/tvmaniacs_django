@@ -4,7 +4,7 @@ databaseName = "tvdb"
 connection = MongoClient()
 
 db = connection[databaseName]
-actors = db['actor']
+actors = db['actors']
 series = db['series']
 
 a = [{"imdb_id": "nm0000102", "first_name": "Kevin", "last_name": "Bacon", "score":60, "high_score":70, "low_score":40,
