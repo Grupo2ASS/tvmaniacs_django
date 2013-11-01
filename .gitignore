@@ -4,3 +4,6 @@
 *.ipr
 
 .DS_Store
+
+/tvmaniacs_django.sublime-project
+/tvmaniacs_django.sublime-workspace
