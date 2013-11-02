@@ -3,4 +3,5 @@ argparse==1.2.1
 django-bootstrap-toolkit==2.15.0
 mongoengine==0.8.4
 pymongo==2.6.2
+selenium==2.37.2
 wsgiref==0.1.2

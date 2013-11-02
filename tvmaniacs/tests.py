@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client
+from django.test import LiveServerTestCase
+from selenium.webdriver.firefox.webdriver import WebDriver
 from models import Actors
 from models import Series
 
@@ -30,6 +32,12 @@ class ActorTestMethods(TestCase):
     def setUp(self):
         self.client = Client()
 
+    def test_actors_to_string(self):
+        actors = Actors.objects
+        for actor in actors:
+            actor_str = actor.__unicode__()
+            self.assertEqual(actor_str, actor.first_name+' '+actor.last_name)
+
     def test_actor_list_exist(self):
         response = self.client.get('/actors/')
         self.assertEqual(response.status_code, 200)
@@ -46,3 +54,34 @@ class ActorTestMethods(TestCase):
             if max_freq < value:
                 max_freq = value
         self.assertLessEqual(max_freq, 1)
+
+
+class SeleniumTestMethods(LiveServerTestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.selenium = WebDriver()
+        super(SeleniumTestMethods, cls).setUpClass()
+
+    @classmethod
+    def tearDownClass(cls):
+        super(SeleniumTestMethods, cls).tearDownClass()
+        cls.selenium.quit()
+
+    def test_navegation_bar(self):
+        self.selenium.get("%s%s" % (self.live_server_url, "/"))
+
+        self.selenium.find_element_by_id("nav_actors").click()
+        title_str = self.selenium.find_element_by_id("content_title").text
+        self.assertEqual(title_str, "Actors")
+
+        self.selenium.find_element_by_id("nav_series").click()
+        title_str = self.selenium.find_element_by_id("content_title").text
+        self.assertEqual(title_str, "Series")
+
+    """
+    def test_search(self):
+        self.selenium.get("%s%s" % (self.live_server_url, "/"))
+        search_input = self.selenium.find_element_by_name("search")
+        search_input.send_keys("Kevin Bacon")
+        self.selenium.find_element_by_xpath('//input[@value="Search"]').click()
+    """
