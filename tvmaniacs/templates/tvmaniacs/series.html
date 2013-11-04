@@ -2,12 +2,15 @@
 {% block content %}
     <h1 id="content_title">Series</h1>
     <div>
+        {% load pagination_tags %}
         <table class="table">
             <tr>
                 <th>Name</th>
                 <th>User Rating</th>
                 <th>Description</th>
             </tr>
+
+            {% autopaginate Series page_limit %}
             {% for series in Series %}
                 <tr>
                     <td>
@@ -20,6 +23,7 @@
                 </tr>
             {% endfor %}
         </table>
+        {% paginate %}
     </div>
 
 {% endblock %}
