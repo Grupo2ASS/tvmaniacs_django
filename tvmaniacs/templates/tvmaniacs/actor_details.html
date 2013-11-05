@@ -32,12 +32,14 @@
             </div>
         </div>
         <div class="row-after">
-            <div>
-                <h4>Series</h4>
-                {% for s in Actor.get_series %}
-                    <p><a href="{% url 'series_details' imdb_id=s.imdb_id %}">{{ s }}</a></p>
-                {% endfor %}
-            </div>
+            {% if Actor.get_series %}
+                <div>
+                    <h4>Series</h4>
+                    {% for s in Actor.get_series %}
+                        <p><a href="{% url 'series_details' imdb_id=s.imdb_id %}">{{ s }}</a></p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 

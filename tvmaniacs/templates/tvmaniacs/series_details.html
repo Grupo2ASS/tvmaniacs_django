@@ -35,21 +35,25 @@
             </div>
         </div>
         <div class="row-after">
-            <div>
-                <h4>Seasons</h4>
+            {% if Series.seasons %}
+                <div>
+                    <h4>Seasons</h4>
 
-                <p>
-                    {% for s in Series.seasons %}
-                        <a href="{% url 'episodes' Series.imdb_id s.number %}">{{ s.number }}</a>
+                    <p>
+                        {% for s in Series.seasons %}
+                            <a href="{% url 'episodes' Series.imdb_id s.number %}">{{ s.number }}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+            {% endif %}
+            {% if Series.get_cast %}
+                <div>
+                    <h4>Cast</h4>
+                    {% for a in Series.get_cast %}
+                        <p><a href="{% url 'actor_details' imdb_id=a.imdb_id %}">{{ a }}</a></p>
                     {% endfor %}
-                </p>
-            </div>
-            <div>
-                <h4>Cast</h4>
-                {% for a in Series.get_cast %}
-                    <p><a href="{% url 'actor_details' imdb_id=a.imdb_id %}">{{ a }}</a></p>
-                {% endfor %}
-            </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 
