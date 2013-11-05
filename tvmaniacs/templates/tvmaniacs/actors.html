@@ -1,11 +1,13 @@
 {% extends "tvmaniacs/base.html" %}
 {% block content %}
-    <h1>Actors</h1>
+    <h1 id="content_title">Actors</h1>
     <div>
+        {% load pagination_tags %}
         <table class="table">
             <tr>
                 <th>Name</th>
             </tr>
+            {% autopaginate Actors page_limit %}
             {% for actor in Actors %}
                 <tr>
                     <td>
@@ -14,6 +16,7 @@
                 </tr>
             {% endfor %}
         </table>
+        {% paginate %}
     </div>
 
 {% endblock %}

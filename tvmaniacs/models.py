@@ -43,6 +43,10 @@ class Series(Document):
     seasons = ListField(EmbeddedDocumentField(Season))
     cast = ListField()
 
+    @staticmethod
+    def page_limit():
+        return 20
+
     def timespan(self):
         return '(' + self.year_start + ' - ' + self.year_end + ')'
 
@@ -74,6 +78,10 @@ class Actors(Document):
     birth_date = DateTimeField()
     birth_place = StringField(max_length=255)
     series = ListField()
+
+    @staticmethod
+    def page_limit():
+        return 20
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
