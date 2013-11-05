@@ -28,7 +28,9 @@
 
                 <p>Birth Date: {{ Actor.birth_date }}</p>
 
-                <p class="top-offset5">{{ Actor.bio }}</p>
+                {% if Actor.bio %}
+                    <p class="top-offset5">{{ Actor.bio }}</p>
+                {% endif%}
             </div>
         </div>
         <div class="row-after">

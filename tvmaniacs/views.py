@@ -36,3 +36,12 @@ def episodes(request, imdb_id, season_number):
     series = Series.objects.get(imdb_id=imdb_id)
     season = series.get_season(season_number)
     return render_to_response("tvmaniacs/episodes.html", {'Series': series, 'Season': season})
+
+
+def search( request ):
+  if 'search_query' in request.GET:
+    aux = request.GET["search_query"]
+    found_actors = Actors.objects.filter( first_name__contains = aux )
+    return render_to_response("tvmaniacs/actors.html",
+                              {'Actors': found_actors, "page_limit": Actors.page_limit()},
+                              context_instance=RequestContext(request))

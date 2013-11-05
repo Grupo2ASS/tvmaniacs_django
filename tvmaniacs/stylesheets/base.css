@@ -1,0 +1,11 @@
+body {
+    padding-top: 60px;
+}
+
+#content_title {
+    float: left;
+}
+
+.navbar-search {
+    float: right;
+}
