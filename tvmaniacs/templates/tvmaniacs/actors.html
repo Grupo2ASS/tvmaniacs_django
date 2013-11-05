@@ -2,10 +2,16 @@
 {% block content %}
 
     <!-- Falta agregar class="search_message" -->
+    {% if search_message %}
+        <div class = "search_message">
+            <h5>{{ search_message }}</h5>
+        </div>
+    {% endif %}
+
     <div class>
         <h1 id="content_title">Actors</h1>
 
-        <form class = "pull-down  navbar-search" action="{% url 'search' %}" method = "get">
+        <form class = "pull-down  navbar-search" action="{% url 'search_actors' %}" method = "get">
             <div class="input-append">
                 <input class="search-query input-medium" id="actor_search_input"  name="search_query" type="text" placeholder="Search..." >
                 <button type = "submit "class="btn btn-large" id="actor_search_button" type="button"><i class="icon-search"></i></button>
