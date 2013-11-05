@@ -19,7 +19,7 @@
                         <p>{{ series.timespan }}</p>
                     </td>
                     <td>{{ series.user_rating }}</td>
-                    <td>{{ series.description }}</td>
+                    <td>{{ series.description | safe}}</td>
                 </tr>
             {% endfor %}
         </table>
