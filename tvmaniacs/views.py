@@ -28,7 +28,7 @@ def actor_details(request, imdb_id):
 
 
 def series_details(request, imdb_id):
-    series = Series.objects.filter(imdb_id=imdb_id)
+    series = Series.objects.get(imdb_id=imdb_id)
     return render_to_response("tvmaniacs/series_details.html", {'Series': series})
 
 
