@@ -28,7 +28,7 @@ def actor_details(request, imdb_id):
 
 
 def series_details(request, imdb_id):
-    series = Series.objects.get(imdb_id=imdb_id)
+    series = Series.objects.filter(imdb_id=imdb_id)
     return render_to_response("tvmaniacs/series_details.html", {'Series': series})
 
 
@@ -37,11 +37,19 @@ def episodes(request, imdb_id, season_number):
     season = series.get_season(season_number)
     return render_to_response("tvmaniacs/episodes.html", {'Series': series, 'Season': season})
 
+def search_series( request ):
+  texto = request.GET["search_query"]
+  found_series = Series.objects.filter( name__icontains = texto)
+  mensaje = "Resultados encontrados: " + str( len(found_series) )
+
+  return render_to_response( "tvmaniacs/series.html", 
+                            {'Series': found_series, "page_limit": Series.page_limit(), 'search_message': mensaje}, 
+                            context_instance=RequestContext(request))
 
 def search_actors( request ):
   if 'search_query' in request.GET:
     texto = request.GET["search_query"]
-    found_actors = Actors.objects.filter( first_name__contains = texto )
+    found_actors = Actors.objects.filter( first_name__icontains = texto )
 
     mensaje = "Resultados encontrados: " + str( len(found_actors) )
 
