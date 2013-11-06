@@ -101,7 +101,7 @@ class SeleniumTestMethods(LiveServerTestCase):
         search_input = self.selenium.find_element_by_id("actor_search_input")
         search_input.send_keys("Kevin Bacon")
         self.selenium.find_element_by_id("actor_search_button").click()
-        self.assertTrue(self.selenium.find_element_by_name("search_message").size() > 0)
+        self.assertTrue(self.selenium.find_element_by_class_name("search_message"))
 
     def test_series_search(self):
         self.selenium.get("%s%s" % (self.live_server_url, "/"))
@@ -109,4 +109,4 @@ class SeleniumTestMethods(LiveServerTestCase):
         search_input = self.selenium.find_element_by_id("series_search_input")
         search_input.send_keys("Game of Thrones")
         self.selenium.find_element_by_id("series_search_button").click()
-        self.assertTrue(self.selenium.find_element_by_name("search_message").size() > 0)
+        self.assertTrue(self.selenium.find_element_by_class_name("search_message"))
