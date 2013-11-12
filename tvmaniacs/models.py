@@ -47,6 +47,10 @@ class Series(Document):
     def page_limit():
         return 20
 
+    @staticmethod
+    def all_ordered_alphabetically():
+        return Series.objects.order_by('name')
+
     def timespan(self):
         return '(' + self.year_start + ' - ' + self.year_end + ')'
 
@@ -82,6 +86,10 @@ class Actors(Document):
     @staticmethod
     def page_limit():
         return 20
+
+    @staticmethod
+    def all_ordered_alphabetically():
+        return Actors.objects.order_by('first_name', '+last_name')
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
