@@ -101,8 +101,16 @@ class Actors(Document):
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
 
-    def has_scores(self):
-        if self.score and self.high_score and self.low_score:
+    def has_score(self):
+        if self.score:
+            return True
+
+    def has_low_score(self):
+        if self.low_score:
+            return  True
+
+    def has_high_score(self):
+        if self.high_score:
             return True
 
     def __unicode__(self):

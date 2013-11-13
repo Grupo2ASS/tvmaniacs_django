@@ -10,15 +10,20 @@
                 <h1>{{ Actor }}</h1>
 
                 <div class="row-fluid top-offset2">
-                    {% if Actor.has_scores %}
+                    {% if Actor.has_score %}
                         <div class="pull-left">
                             <p>Score</p>
 
                             <h2>{{ Actor.score }}</h2>
                         </div>
+                    {% endif %}
+                    {% if Actor.has_high_score %}
                         <div class="offset3 top-offset2">
                             <p>High: {{ Actor.high_score }}</p>
-
+                        </div>
+                    {% endif %}
+                    {% if Actor.has_low_score %}
+                        <div class="offset3 top-offset2">
                             <p>Low: {{ Actor.low_score }}</p>
                         </div>
                     {% endif %}
