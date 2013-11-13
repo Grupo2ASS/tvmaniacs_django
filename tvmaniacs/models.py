@@ -31,7 +31,6 @@ class Season(EmbeddedDocument):
 class Series(Document):
     imdb_id = StringField(max_length=15, required=True)
     name = StringField(max_length=255, required=True)
-    year = DateTimeField()
     year_start = DateTimeField()
     year_end = DateTimeField()
     user_rating = FloatField(min_value=0, max_value=10)
@@ -52,7 +51,15 @@ class Series(Document):
         return Series.objects.order_by('name')
 
     def timespan(self):
-        return '(' + self.year_start + ' - ' + self.year_end + ')'
+        if self.year_start:
+            start = self.year_start
+        else:
+            start = ''
+        if self.year_end:
+            end = self.year_end
+        else:
+            end = ''
+        return '(' + str(start) + ' - ' + str(end) + ')'
 
     def get_cast(self):
         return Actors.objects.filter(imdb_id__in=self.cast)

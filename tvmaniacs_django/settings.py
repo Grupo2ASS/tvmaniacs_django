@@ -121,6 +121,9 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').repl
 #DECLARAMOS NOMBRE DE LA BASE DE DATOS A UTILIZAR
 DBNAME = 'tvdb'
 
+# Declaramos formato de tipo Date
+DATETIME_FORMAT = 'F d, Y'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
