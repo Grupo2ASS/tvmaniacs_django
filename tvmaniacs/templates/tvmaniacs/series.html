@@ -10,7 +10,7 @@
     <div class>
         <h1 id="content_title">Series</h1>
 
-        <form class = "pull-down  navbar-search" action="{% url 'series' %}" method = "get">
+        <form id="series-search-form" class = "pull-down  navbar-search" action="{% url 'series' %}" method = "get">
             <div class="input-append">
                 <input id="form-sort-hidden" type="hidden" name="sort" value="name">
                 <input class="search-query input-medium" id="series_search_input"  name="search_query" type="text" placeholder="Search..." >
