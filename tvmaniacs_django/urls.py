@@ -6,15 +6,11 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^$', 'tvmaniacs.views.home', name='home'),
-    url(r'^actors/$', 'tvmaniacs.views.actors', name='actors'),
-    url(r'^series/$', 'tvmaniacs.views.series', name='series'),
+    url(r'^actors$', 'tvmaniacs.views.actors', name='actors'),
+    url(r'^series$', 'tvmaniacs.views.series', name='series'),
     url(r'^actor/(?P<imdb_id>\w+)/$', 'tvmaniacs.views.actor_details', name='actor_details'),
-    url(r'^series/search/$', 'tvmaniacs.views.search_series', name='search_series'),
     url(r'^series/(?P<imdb_id>\w+)/((?P<season_number>\d+))/$', 'tvmaniacs.views.episodes', name='episodes'),
     url(r'^series/(?P<imdb_id>\w+)/$', 'tvmaniacs.views.series_details', name='series_details'),
-
-    url(r'^actors/search/$', 'tvmaniacs.views.search_actors', name='search_actors'),
-    
 
     # Examples:
     # url(r'^$', 'tvmaniacs_django.views.home', name='home'),

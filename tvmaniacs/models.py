@@ -50,6 +50,10 @@ class Series(Document):
     def all_ordered_alphabetically():
         return Series.objects.order_by('name')
 
+    @staticmethod
+    def all_order_by_rating():
+        return Series.objects.order_by('-user_rating')
+
     def timespan(self):
         if self.year_start:
             start = self.year_start
@@ -96,7 +100,7 @@ class Actors(Document):
 
     @staticmethod
     def all_ordered_alphabetically():
-        return Actors.objects.order_by('first_name', '+last_name')
+        return Actors.objects.order_by('first_name', 'last_name')
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)

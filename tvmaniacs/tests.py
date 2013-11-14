@@ -44,7 +44,7 @@ class PageExistTestMethods(TestCase):
         self.client = Client()
 
     def test_series_list_exist(self):
-        response = self.client.get('/series/')
+        response = self.client.get('/series')
         self.assertEqual(response.status_code, 200)
 
     def test_series_details_exist(self):
@@ -64,7 +64,7 @@ class PageExistTestMethods(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_actor_list_exist(self):
-        response = self.client.get('/actors/')
+        response = self.client.get('/actors')
         self.assertEqual(response.status_code, 200)
 
     def test_actor_details_exist(self):
