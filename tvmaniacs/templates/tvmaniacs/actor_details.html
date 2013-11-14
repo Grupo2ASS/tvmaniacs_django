@@ -10,25 +10,25 @@
                 <h1>{{ Actor }}</h1>
 
                 <div class="row-fluid top-offset2">
-                    {% if Actor.has_score %}
+                    {% if Actor.score %}
                         <div class="pull-left">
                             <p>Score</p>
 
                             <h2>{{ Actor.score }}</h2>
                         </div>
                     {% endif %}
-                    {% if Actor.has_high_score %}
+                    {% if Actor.high_score %}
                         <div class="offset3 top-offset2">
                             <p>High: {{ Actor.high_score }}</p>
                         </div>
                     {% endif %}
-                    {% if Actor.has_low_score %}
+                    {% if Actor.low_score %}
                         <div class="offset3 top-offset2">
                             <p>Low: {{ Actor.low_score }}</p>
                         </div>
                     {% endif %}
                 </div>
-                {% if Actor.has_birthplace %}
+                {% if Actor.birth_place %}
                     <p id="birthplace">Birth Place: {{ Actor.birth_place }}</p>
                 {% endif %}
                 <p id="birthdate">Birth Date: {{ Actor.birth_date }}</p>
