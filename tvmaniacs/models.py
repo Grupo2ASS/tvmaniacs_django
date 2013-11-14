@@ -113,5 +113,9 @@ class Actors(Document):
         if self.high_score:
             return True
 
+    def has_birthplace(self):
+        if self.birth_place:
+            return True
+
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)

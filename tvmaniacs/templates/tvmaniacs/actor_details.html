@@ -28,9 +28,9 @@
                         </div>
                     {% endif %}
                 </div>
-
-                <p id="birthplace">Birth Place: {{ Actor.birth_place }}</p>
-
+                {% if Actor.has_birthplace %}
+                    <p id="birthplace">Birth Place: {{ Actor.birth_place }}</p>
+                {% endif %}
                 <p id="birthdate">Birth Date: {{ Actor.birth_date }}</p>
 
                 <p id="biography" class="top-offset5">{{ Actor.bio | safe }}</p>
