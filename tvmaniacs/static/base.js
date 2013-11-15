@@ -35,7 +35,7 @@ $(function() {
         if(query != undefined) {
             $('#order-by-name')[0].href += "&search_query="+query;
             $('#order-by-user-rating')[0].href += "&search_query="+query;
-            $('#series_search_input')[0].value = query.replace('+',' ');
+            $('#series_search_input')[0].value = query.split('+').join(' ');
         }
     }
 });
