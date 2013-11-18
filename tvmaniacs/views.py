@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from models import Actors
 from models import Series
+from models import Episode
 
 VALID_SORTS = {
     "name": "name",
@@ -55,6 +56,13 @@ def episodes(request, imdb_id, season_number):
     series = Series.objects.get(imdb_id=imdb_id)
     season = series.get_season(season_number)
     return render_to_response('tvmaniacs/episodes.html', {'Series': series, 'Season': season})
+
+
+def episode_details(request, imdb_id, season_number, name):
+    series = Series.objects.get(imdb_id=imdb_id)
+    season = series.get_season(season_number)
+    episode = season.get_chapter(name)
+    return render_to_response('tvmaniacs/episode_details.html', {'Series': series, 'Season': season, 'Episode': episode})
 
 
 ##---------------------------------- INTERNAL METHODS---------------------------------------------------

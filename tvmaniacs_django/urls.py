@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^actor/(?P<imdb_id>\w+)/$', 'tvmaniacs.views.actor_details', name='actor_details'),
     url(r'^series/(?P<imdb_id>\w+)/((?P<season_number>\d+))/$', 'tvmaniacs.views.episodes', name='episodes'),
     url(r'^series/(?P<imdb_id>\w+)/$', 'tvmaniacs.views.series_details', name='series_details'),
+    url(r'^series/(?P<imdb_id>\w+)/((?P<season_number>\d+))/(?P<name>\w+)/$', 'tvmaniacs.views.episode_details', name='episode_details'),
 
     # Examples:
     # url(r'^$', 'tvmaniacs_django.views.home', name='home'),

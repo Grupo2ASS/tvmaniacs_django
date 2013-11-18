@@ -1,0 +1,28 @@
+{% extends "tvmaniacs/base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="pull-left">
+                <img src="{{ Series.pic }}" class="img-thumbnail">
+            </div>
+            <div class="offset3">
+                <h1>{{ Episode.name }}</h1>
+                <h5>
+                    <a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a> -
+                    <a href="{% url 'episodes' Series.imdb_id Season.number %}">Season {{ Season.number }}</a>
+                </h5>
+                <br>
+                <div>
+                        <p>User Rating</p>
+                        <h2>{{ Episode.user_rating }}</h2>
+                </div>
+                {% if Episode.description %}
+                    <br><br><br>
+                    <p class="top-offset5">{{ Episode.description | safe}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
