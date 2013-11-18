@@ -27,6 +27,12 @@ class Season(EmbeddedDocument):
     chapters = ListField(EmbeddedDocumentField(Episode))
     reviews = ListField(EmbeddedDocumentField(Review))
 
+    def get_chapter(self, chapter_name):
+        for c in self.chapters:
+            if c.name == chapter_name:
+                return c
+        return {}
+
 
 class Series(Document):
     imdb_id = StringField(max_length=15, required=True)
