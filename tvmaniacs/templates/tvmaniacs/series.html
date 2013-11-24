@@ -1,6 +1,8 @@
 {% extends "tvmaniacs/base.html" %}
+{% block title %}
+    <title>Series - TvManiacs</title>
+{% endblock %}
 {% block content %}
-
     {% if search_message %}
         <div class = "search_message">
             <h5>{{ search_message }}</h5>
@@ -37,7 +39,7 @@
                         <p>{{ series.timespan }}</p>
                     </td>
                     <td>{{ series.user_rating }}</td>
-                    <td>{{ series.description | safe}}</td>
+                    <td>{{ series.get_description | safe}}</td>
                 </tr>
             {% endfor %}
         </table>

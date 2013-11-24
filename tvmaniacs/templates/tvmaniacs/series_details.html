@@ -1,4 +1,7 @@
 {% extends "tvmaniacs/base.html" %}
+{% block title %}
+    <title>{{Series.name}} - TvManiacs</title>
+{% endblock %}
 {% block content %}
     <div class="container-fluid">
         <div class="row-fluid">
@@ -25,9 +28,7 @@
                         </div>
                     {% endif %}
                 </div>
-                {% if Series.description %}
-                    <p class="top-offset5">{{ Series.description | safe}}</p>
-                {% endif %}
+                <p class="top-offset5">{{ Series.get_description | safe}}</p>
                 <div class="genres">
                     {% for g in Series.genres %}
                         <p>{{ g }}</p>

@@ -20,6 +20,11 @@ class Episode(EmbeddedDocument):
     user_rating = FloatField(min_value=0, max_value=10)
     description = StringField()
 
+    def get_description(self):
+        if self.description:
+            return self.description.replace('<a href="/', '<a href="http://www.imdb.com/')
+        return ""
+
 
 class Season(EmbeddedDocument):
     number = IntField(required=True)
@@ -83,6 +88,11 @@ class Series(Document):
     def get_length(self):
         return str(self.length) + ' min'
 
+    def get_description(self):
+        if self.description:
+            return self.description.replace('<a href="/', '<a href="http://www.imdb.com/')
+        return ""
+
     def __unicode__(self):
         return self.name
 
@@ -110,6 +120,11 @@ class Actors(Document):
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
+
+    def get_bio(self):
+        if self.bio:
+            return self.bio.replace('<a href="/', '<a href="http://www.imdb.com/')
+        return ""
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
