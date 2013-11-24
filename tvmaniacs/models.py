@@ -91,6 +91,15 @@ class Series(Document):
 
     def get_description(self):
         if self.description:
+            #busca ocurrencias de links y entrega todos
+            match = re.findall(r'<a href="(.*?)".*>(.*)</a>', self.description)
+            #si encuentra alguno
+            if match:
+                #para cada ocurrencia que encontro
+                for link, title in match:
+                    #si no es "See full bio" reemplaza el primer link solo por su contenido
+                    if title != "See full summary":
+                        self.description = re.sub(r'<a href="(.*?)".*>(.*)</a>', title, self.description, 1)
             return self.description.replace('<a href="/', '<a href="http://www.imdb.com/')
         return ""
 
