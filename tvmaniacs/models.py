@@ -1,5 +1,6 @@
 from mongoengine import *
 from tvmaniacs_django.settings import DBNAME
+import re
 
 
 connect(DBNAME)
@@ -123,6 +124,15 @@ class Actors(Document):
 
     def get_bio(self):
         if self.bio:
+            #busca ocurrencias de links y entrega todos
+            match = re.findall(r'<a href="(.*?)".*>(.*)</a>', self.bio)
+            #si encuentra alguno
+            if match:
+                #para cada ocurrencia que encontro
+                for link, title in match:
+                    #si no es "See full bio" reemplaza el primer link solo por su contenido
+                    if title != "See full bio":
+                        self.bio = re.sub(r'<a href="(.*?)".*>(.*)</a>', title, self.bio, 1)
             return self.bio.replace('<a href="/', '<a href="http://www.imdb.com/')
         return ""
 
