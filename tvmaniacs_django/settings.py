@@ -1,6 +1,5 @@
-# Django settings for tvmaniacs_django project.
+from mongoengine import *
 import os
-
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -119,7 +118,7 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').repl
 
 
 #DECLARAMOS NOMBRE DE LA BASE DE DATOS A UTILIZAR
-DBNAME = 'tvdb'
+connect('tvdb')
 
 # Declaramos formato de tipo Date
 DATETIME_FORMAT = 'F d, Y'

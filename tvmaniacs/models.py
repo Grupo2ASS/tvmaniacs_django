@@ -1,9 +1,5 @@
 from mongoengine import *
-from tvmaniacs_django.settings import DBNAME
 import re
-
-
-connect(DBNAME)
 
 
 class Review(EmbeddedDocument):
@@ -126,7 +122,7 @@ class Actors(Document):
 
     @staticmethod
     def all_ordered_alphabetically():
-        return Actors.objects.order_by('first_name', 'last_name')
+        return Actors.objects.only('first_name', 'last_name').order_by('first_name', 'last_name')
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
