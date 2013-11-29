@@ -115,6 +115,7 @@ class Actors(Document):
     birth_date = DateTimeField()
     birth_place = StringField(max_length=255)
     series = ListField()
+    bacon_number = IntField(min_value=0) 
 
     @staticmethod
     def page_limit():
