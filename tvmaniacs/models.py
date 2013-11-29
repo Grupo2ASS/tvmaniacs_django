@@ -123,7 +123,7 @@ class Actors(Document):
 
     @staticmethod
     def all_ordered_alphabetically():
-        return Actors.objects.only('first_name', 'last_name').order_by('first_name', 'last_name')
+        return Actors.objects.only('imdb_id', 'first_name', 'last_name').order_by('first_name', 'last_name')
 
     def get_series(self):
         return Series.objects.filter(imdb_id__in=self.series)
