@@ -4,9 +4,13 @@ from models import Actors
 from models import Series
 from models import Episode
 
-VALID_SORTS = {
+VALID_SERIES_SORTS = {
     "name": "name",
     "rating": "rating"
+}
+VALID_ACTORS_SORT = {
+    "name": "name",
+    "bacon": "bacon"
 }
 DEFAULT_SORT = 'name'
 
@@ -16,7 +20,15 @@ def home(request):
 
 
 def actors(request):
-    actors_all = Actors.all_ordered_alphabetically()
+    sort_key = request.GET.get('sort', DEFAULT_SORT)
+    sort = VALID_ACTORS_SORT.get(sort_key, DEFAULT_SORT)
+
+    #TODO: Ordered by Bacon number instead of alphabetically.
+    if sort == 'bacon':
+        actors_all = Actors.all_ordered_alphabetically()
+    else:
+        actors_all = Actors.all_ordered_alphabetically()
+
     if 'search_query' in request.GET:
         return search_actors(request, actors_all)
     else:
@@ -27,7 +39,7 @@ def actors(request):
 
 def series(request):
     sort_key = request.GET.get('sort', DEFAULT_SORT)
-    sort = VALID_SORTS.get(sort_key, DEFAULT_SORT)
+    sort = VALID_SERIES_SORTS.get(sort_key, DEFAULT_SORT)
 
     if sort == 'rating':
         series_all = Series.all_order_by_rating()

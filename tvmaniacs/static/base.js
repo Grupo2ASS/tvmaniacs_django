@@ -20,22 +20,53 @@ var QueryString = function () {
 } ();
 
 $(function() {
-    var check_all_exist = $('#order-by-name').length>0 && $('#order-by-user-rating').length>0;
-    check_all_exist = check_all_exist && $('#form-sort-hidden').length>0;
-    check_all_exist = check_all_exist && $('#series-search-form').length>0;
+    var order_by_name = $('#order-by-name');
+    var order_by_user_rating = $('#order-by-user-rating');
+    var series_search_form = $('#series-search-form');
 
-    if(check_all_exist) {
-        $('#series-search-form').submit(function() {
-            var sort = (QueryString["sort"] == undefined) ? 'name' : QueryString["sort"];
-            $('#form-sort-hidden')[0].value = sort;
+    var form_sort_hidden = $('#form-sort-hidden');
+
+    var check_all_exist_series = order_by_name.length>0 && order_by_user_rating.length>0;
+    check_all_exist_series = check_all_exist_series && form_sort_hidden.length>0;
+    check_all_exist_series = check_all_exist_series && series_search_form.length>0;
+
+    var search_query = QueryString["search_query"];
+
+    if(check_all_exist_series) {
+        series_search_form.submit(function() {
+            var sort_param = (QueryString["sort"] == undefined) ? 'name' : QueryString["sort"];
+            form_sort_hidden[0].value = sort_param;
             return true;
         });
 
-        var query = QueryString["search_query"];
-        if(query != undefined) {
-            $('#order-by-name')[0].href += "&search_query="+query;
-            $('#order-by-user-rating')[0].href += "&search_query="+query;
-            $('#series_search_input')[0].value = query.split('+').join(' ');
+        if(search_query != undefined) {
+            order_by_name[0].href += "&search_query="+search_query;
+            order_by_user_rating[0].href += "&search_query="+search_query;
+
+            var series_search_input = $('#series_search_input');
+            if(series_search_input.length>0){
+                series_search_input[0].value = search_query.split('+').join(' ');
+            }
+        }
+    }
+
+    var actor_search_form = $('#actor-search-form');
+
+    var check_all_exist_actor = form_sort_hidden.length>0;
+    check_all_exist_actor = check_all_exist_actor && actor_search_form.length>0;
+
+    if(check_all_exist_actor){
+        actor_search_form.submit(function() {
+            var sort_param = (QueryString["sort"] == undefined) ? 'name' : QueryString["sort"];
+            form_sort_hidden[0].value = sort_param;
+            return true;
+        });
+
+        if(search_query != undefined) {
+            var actor_search_input = $('#actor_search_input');
+            if(actor_search_input.length>0){
+                actor_search_input[0].value = search_query.split('+').join(' ');
+            }
         }
     }
 });
