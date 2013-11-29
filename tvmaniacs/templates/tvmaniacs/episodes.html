@@ -1,4 +1,7 @@
 {% extends "tvmaniacs/base.html" %}
+{% block title %}
+    <title>{{Series.name}} - TvManiacs</title>
+{% endblock %}
 {% block content %}
     <h1><a href="{% url 'series_details' imdb_id=Series.imdb_id %}">{{ Series.name }}</a>: Season {{ Season.number }}
     </h1>
@@ -15,7 +18,7 @@
                     <tr>
                         <td><a href="{% url 'episode_details' Series.imdb_id Season.number c.name %}">{{ c.name }}</a></td>
                         <td>{{ c.user_rating }}</td>
-                        <td>{{ c.description }}</td>
+                        <td>{{ c.get_description | safe}}</td>
                     </tr>
                 {% endfor %}
             </table>
