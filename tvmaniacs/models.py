@@ -56,11 +56,13 @@ class Series(Document):
 
     @staticmethod
     def all_ordered_alphabetically():
-        return Series.objects.order_by('name')
+        return Series.objects.only('imdb_id', 'name', 'user_rating', 'year_start', 'year_end', 'description')\
+            .order_by('name')
 
     @staticmethod
     def all_order_by_rating():
-        return Series.objects.order_by('-user_rating')
+        return Series.objects.only('imdb_id', 'name', 'user_rating', 'year_start', 'year_end', 'description')\
+            .order_by('-user_rating')
 
     def timespan(self):
         if self.year_start:
