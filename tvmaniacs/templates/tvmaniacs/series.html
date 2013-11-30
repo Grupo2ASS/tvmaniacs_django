@@ -22,15 +22,14 @@
     </div>
     
     <div>
-        {% load pagination_tags %}
+        {% load endless %}
         <table class="table">
             <tr>
                 <th><a id='order-by-name' href="?sort=name">Name</a></th>
                 <th><a id='order-by-user-rating' href="?sort=rating">User Rating</a></th>
                 <th>Description</th>
             </tr>
-
-            {% autopaginate Series page_limit %}
+            {% lazy_paginate page_limit Series %}
             {% for series in Series %}
                 <tr>
                     <td>
@@ -43,7 +42,7 @@
                 </tr>
             {% endfor %}
         </table>
-        {% paginate %}
+        {% show_more %}
     </div>
 
 {% endblock %}

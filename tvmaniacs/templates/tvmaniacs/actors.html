@@ -23,12 +23,12 @@
     </div>
     
     <div>
-        {% load pagination_tags %}
+        {% load endless %}
         <table class="table">
             <tr>
                 <th>Name</th>
             </tr>
-            {% autopaginate Actors page_limit %}
+            {% lazy_paginate page_limit Actors %}
             {% for actor in Actors %}
                 <tr>
                     <td>
@@ -37,7 +37,7 @@
                 </tr>
             {% endfor %}
         </table>
-        {% paginate %}
+        {% show_pages %}
     </div>
 
 {% endblock %}
