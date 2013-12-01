@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from models import Actors
 from models import Series
-from models import Episode
+from mongoengine import Q
 
 VALID_SERIES_SORTS = {
     "name": "name",
@@ -88,8 +88,18 @@ def search_series(request, series_list):
 
 
 def search_actors(request, actors_list):
-    text = request.GET["search_query"]
-    found_actors = actors_list.filter(first_name__icontains=text)
+    text_list = request.GET["search_query"].split()
+    if len(text_list) == 0:
+        found_actors = actors_list
+    else:
+        condition = Q(first_name__icontains=text_list[0])
+        condition |= Q(last_name__icontains=text_list[0])
+        if len(text_list) > 1:
+            for string in text_list[1:]:
+                condition |= Q(first_name__icontains=string)
+                condition |= Q(last_name__icontains=string)
+        found_actors = actors_list.filter(condition)
+
     message = "Results: " + str(len(found_actors))
     return render_to_response('tvmaniacs/actors.html',
                               {'Actors': found_actors, 'page_limit': Actors.page_limit(),
