@@ -18,7 +18,7 @@
                     <tr>
                         <td><a href="{% url 'episode_details' Series.imdb_id Season.number c.name %}">{{ c.name }}</a></td>
                         <td>{{ c.user_rating }}</td>
-                        <td>{{ c.get_description | safe}}</td>
+                        <td>{{ c.description | safe}}</td>
                     </tr>
                 {% endfor %}
             </table>

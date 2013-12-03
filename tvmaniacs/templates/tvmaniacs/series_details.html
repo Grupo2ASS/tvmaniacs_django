@@ -28,7 +28,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <p class="top-offset5">{{ Series.get_description | safe}}</p>
+                <p class="top-offset5">{{ Series.description | safe}}</p>
                 <div class="genres">
                     {% for g in Series.genres %}
                         <p>{{ g }}</p>
