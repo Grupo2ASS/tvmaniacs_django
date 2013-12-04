@@ -1,5 +1,4 @@
 from mongoengine import *
-import re
 
 
 class Review(EmbeddedDocument):
@@ -17,6 +16,11 @@ class Episode(EmbeddedDocument):
     user_rating = FloatField(min_value=0, max_value=10)
     description = StringField()
 
+    def get_s_name(self):
+        s_name = self.name
+        s_name = s_name.replace(" ", "")
+        s_name = s_name.lower()
+        return s_name
 
 
 class Season(EmbeddedDocument):
@@ -27,7 +31,10 @@ class Season(EmbeddedDocument):
 
     def get_chapter(self, chapter_name):
         for c in self.chapters:
-            if c.name == chapter_name:
+            s_name = c.name
+            s_name = s_name.replace(" ", "")
+            s_name = s_name.lower()
+            if s_name == chapter_name:
                 return c
         return {}
 

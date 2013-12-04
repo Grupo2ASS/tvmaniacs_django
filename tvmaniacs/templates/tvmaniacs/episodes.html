@@ -16,7 +16,7 @@
                 </tr>
                 {% for c in Season.chapters %}
                     <tr>
-                        <td><a href="{% url 'episode_details' Series.imdb_id Season.number c.name %}">{{ c.name }}</a></td>
+                        <td><a href="{% url 'episode_details' Series.imdb_id Season.number c.get_s_name %}">{{ c.name }}</a></td>
                         <td>{{ c.user_rating }}</td>
                         <td>{{ c.description | safe}}</td>
                     </tr>
